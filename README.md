@@ -1,4 +1,4 @@
-# 🧾 Projeto Interfocus
+# 🧾 Sistema de Gestão de Clientes e Dívidas
 
 > Projeto desenvolvido durante o **Bootcamp Interfocus 2025**, com o objetivo de praticar o desenvolvimento full stack utilizando **.NET**, **NHibernate**, **PostgreSQL**, **React** e **Vite**.
 
@@ -6,7 +6,7 @@
 
 ## 🧠 Descrição
 
-O **Projeto Interfocus** é uma aplicação completa de gerenciamento de **clientes** e **dívidas**.  
+É uma aplicação completa de gerenciamento de **clientes** e **dívidas**.  
 O sistema permite cadastrar, editar, excluir e visualizar registros, com associação direta entre clientes e suas dívidas.
 
 A aplicação foi dividida em três partes principais:
