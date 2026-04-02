@@ -3,13 +3,13 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /app
 
 COPY . ./
-WORKDIR /app/ProjAPI
+WORKDIR /app/projeto/ProjAPI
 RUN dotnet publish -c Release -o out
 
 # Etapa de execução
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
-COPY --from=build /app/ProjAPI/out .
+COPY --from=build /app/projeto/ProjAPI/out .
 
 ENV ASPNETCORE_URLS=http://+:10000
 
