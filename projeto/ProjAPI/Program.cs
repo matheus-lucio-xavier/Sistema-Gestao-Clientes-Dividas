@@ -45,11 +45,17 @@ else
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+
+//convencional
+//if (app.Environment.IsDevelopment())
+//{
+//    app.UseSwagger();
+//    app.UseSwaggerUI();
+//}
+
+//por conta do deploy fica dessa forma
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseCors(
     b => b.AllowAnyHeader()
@@ -60,7 +66,7 @@ app.UseCors(
 var port = System.Environment.GetEnvironmentVariable("PORT") ?? "10000";
 app.Urls.Add($"http://*:{port}");
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
