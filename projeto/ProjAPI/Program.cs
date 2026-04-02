@@ -37,7 +37,7 @@ else
         config.DataBaseIntegration(
             x => x.ConnectionString = connectionString
         );
-        return config.BuildSessionFactory();
+        return config.BuildSessionFactory(); 
     });
     builder.Services.AddTransient<IRepository, RepositoryNHibernate>();
 }
