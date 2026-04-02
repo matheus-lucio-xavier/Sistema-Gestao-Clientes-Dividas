@@ -29,7 +29,7 @@ if (isInMemory)
 else
 {
     var connectionString = builder.Configuration
-        .GetConnectionString("Default");
+        .GetConnectionString("DefaultConnection");
     // criar implementacao para ISessionFactory
     builder.Services.AddSingleton(c =>
     {
