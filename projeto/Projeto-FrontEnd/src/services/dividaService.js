@@ -1,9 +1,8 @@
+// banco que estiver rodando na maquina
+//const URL_API = "http://localhost:5188";
 
-// PascalCase
-// camelCase
-
-var contador = 1;
-var currentId = null;
+// banco online
+const URL_API = "https://sistema-gestao-clientes-dividas.onrender.com"
 
 export async function salvarDivida(divida) {
     const resultado = await fetch(`${URL_API}/api/Divida`, {
@@ -19,8 +18,6 @@ export async function salvarDivida(divida) {
         data: dados
     }
 }
-
-const URL_API = "http://localhost:5188";
 
 export function listarDividas(busca, cliente) {
     return fetch(`${URL_API}/api/Divida?busca=${busca || ""}&clienteid=${parseInt(cliente, 10) || 0}`, {

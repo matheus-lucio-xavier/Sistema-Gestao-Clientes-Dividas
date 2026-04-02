@@ -1,4 +1,9 @@
-const URL_API = "http://localhost:5188";
+// banco que estiver rodando na maquina
+//const URL_API = "http://localhost:5188";
+
+// banco online
+const URL_API = "https://sistema-gestao-clientes-dividas.onrender.com"
+
 
 export async function salvarCliente(cliente) {
     const resultado = await fetch(`${URL_API}/api/cliente`, {
