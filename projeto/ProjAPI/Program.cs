@@ -57,6 +57,9 @@ app.UseCors(
         .AllowAnyOrigin()
     );
 
+var port = System.Environment.GetEnvironmentVariable("PORT") ?? "10000";
+app.Urls.Add($"http://*:{port}");
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
