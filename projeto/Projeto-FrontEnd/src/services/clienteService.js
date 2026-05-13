@@ -1,8 +1,5 @@
 // banco que estiver rodando na maquina
-//const URL_API = "http://localhost:5188";
-
-// banco online
-const URL_API = "https://sistema-gestao-clientes-dividas.onrender.com"
+const URL_API = "http://localhost:5188";
 
 
 export async function salvarCliente(cliente) {
