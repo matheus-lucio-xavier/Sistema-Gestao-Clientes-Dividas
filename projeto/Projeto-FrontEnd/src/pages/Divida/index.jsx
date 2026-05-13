@@ -139,7 +139,7 @@ export default function DividaPage() {
     return (<>
         <h1>Dividas</h1>
 
-        <div className="row">
+        <div className="filters">
             <label>Pesquisa:</label>
             <input name="pesquisa"
                 type="search"
@@ -153,7 +153,7 @@ export default function DividaPage() {
                 <option value="0">nenhum</option>
                 {
                     clientes.map(clt =>
-                        <option key={clt.id} value={clt.id}>{clt.nome}({clt.cpf})</option>
+                        <option key={clt.id} value={clt.id}>{clt.nome} • {clt.cpf}</option>
                     )
                 }
             </select>
@@ -184,6 +184,13 @@ export default function DividaPage() {
                     )
                 }
             </tbody>
+            {
+                dividasAtual.length === 0 && (
+                    <div className="empty-state">
+                        Nenhuma dívida encontrada.
+                    </div>
+                )
+            }
         </table>
         <div className="pagination">
             <button
@@ -272,11 +279,11 @@ function LinhaDivida({ clientes, divida, onClick }) {
         ? cliente.nome
         : "Cliente não encontrado";
 
-    return (<tr onClick={onClick} style={{backgroundColor: divida.situacao? "green" : new Date(divida.dataPagamento) < new Date()? "red" : ""}}>
+    return (<tr onClick={onClick} className={divida.situacao? "linha-paga": new Date(divida.dataPagamento) < new Date()? "linha-atrasada" : ""}>
         <td>{divida.id}</td>
         <td>{divida.valor}</td>
         <td>{nome}</td>
-        <td>{situacao.toLocaleString()}</td>
+        <td><span className={`badge ${divida.situacao ? "success" : "danger"}`}>{situacao}</span></td>
         <td>{new Date(divida.dataPagamento).toLocaleString()}</td>
         <td>{data.toLocaleString()}</td>
     </tr>)

@@ -181,6 +181,14 @@ export default function ClientePage() {
         <div className="grid-cards">
             {clientesAtual.map(cliente =>
                 <ClienteCard key={cliente.id} cliente={cliente} onClick={() => selecionarLinha(cliente)}></ClienteCard>)}
+
+            {
+                clientesAtual.length === 0 && (
+                    <div className="empty-state">
+                        Nenhum cliente encontrado.
+                    </div>
+                )
+            }
         </div>
 
         <div className="pagination">

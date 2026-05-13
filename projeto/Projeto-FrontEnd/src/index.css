@@ -1,11 +1,33 @@
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+
+    --danger: #dc2626;
+    --success: #16a34a;
+
+    --background: #f5f7fb;
+    --surface: #ffffff;
+
+    --text: #1e293b;
+    --muted: #64748b;
+
+    --border: #e2e8f0;
+}
+
 * {
     padding: 0;
     box-sizing: border-box;
     margin: 0;
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease;
 }
 
 body {
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--background);
+    color: var(--text);
 }
 
 h2 {
@@ -13,47 +35,57 @@ h2 {
 }
 
 table {
-    background-color: gray;
-    color: white;
     width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+
+    border-radius: 14px;
+
+    background: white;
+    color: var(--text);
+
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
 thead {
-    background-color: black;
+    background-color: var(--primary);
+    color: white;
 }
 
-thead th {
-    padding: 8px;
-    font-weight: bold;
+tbody tr:nth-child(even) {
+    background-color: #f8fafc;
+}
+
+tbody tr:hover {
+    background-color: #e0ecff;
 }
 
 tbody td {
     padding: 4px;
-    color: white;
+    color: var(--text);
     border: 1px solid black;
 }
 
-tbody tr:hover {
-    background-color: black;
-    cursor: pointer;
-}
-
 button {
-    background-color: rgb(0, 0, 255);
-    color: white;
-    font-weight: bold;
-    padding: 16px;
-    border-radius: 8px;
-    border-width: 0;
-}
+    border: none;
+    border-radius: 10px;
+    padding: 12px 18px;
 
-button.apagar{
-    background-color: red;
-    box-shadow: black 1px 2px 3px;
+    font-weight: 600;
+
+    background-color: var(--primary);
+    color: white;
+
+    transition: 0.2s ease;
 }
 
 button:hover {
-    filter: brightness(0.5);
+    background-color: var(--primary-dark);
+    transform: scale(1.02);
+}
+
+button.apagar {
+    background-color: var(--danger);
 }
 
 button[type="submit"] {
@@ -123,10 +155,8 @@ form select:invalid:focus {
 
 .grid-cards {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 24px;
-    width: 100%;
-    padding: 16px;
 }
 
 .grid-cards img {
@@ -136,7 +166,9 @@ form select:invalid:focus {
 }
 
 main {
-    padding: 16px 16px 24px 16px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 32px;
 }
 
 .card li:has(img) {
@@ -145,25 +177,31 @@ main {
 }
 
 .card {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    border-radius: 16px;
-    border: 1px solid black;
-    padding: 8px;
+    background-color: white;
+    border-radius: 18px;
+    padding: 20px;
+    border: 1px solid var(--border);
+
+    box-shadow:
+        0 1px 3px rgba(0,0,0,0.05),
+        0 8px 24px rgba(0,0,0,0.04);
+
+    transition: 0.25s ease;
 }
 
 .card:hover {
-    box-shadow: black 4px 6px 8px;
-    cursor: pointer;
-    background-color: black;
-    color: white;
-    transition: background-color 2s ease;
-    transition: color 2s ease;
+    transform: translateY(-4px);
+    box-shadow:
+        0 12px 28px rgba(0,0,0,0.12);
+
+    background-color: white;
+    color: inherit;
 }
 
 .card h4 {
-    text-align: center;
+    font-size: 20px;
+    margin-bottom: 16px;
+    color: var(--primary);
 }
 
 .card ul {
@@ -175,10 +213,6 @@ main {
     width: 100%;
     display: flex;
     justify-content: space-between;
-}
-
-select {
-    padding: 8px;
 }
 
 .row {
@@ -205,61 +239,73 @@ select {
 }
 
 textarea {
-    padding: 8px;
+    min-height: 120px;
+    resize: vertical;
 }
 
 .modal {
     position: fixed;
+    inset: 0;
+
+    background: rgba(15, 23, 42, 0.6);
+
     display: flex;
-    justify-content: space-around;
-    padding: 25px;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.60);
+    justify-content: center;
+    align-items: center;
+
+    backdrop-filter: blur(4px);
+
+    z-index: 999;
 }
 
-.modal form {
-    position: fixed;
-    padding: 24px;
-    top: 20%;
-    background-color: white;
-    height: fit-content;
-    border-radius: 16px;
+.modal form,
+.aviso {
+    background: white;
+    border-radius: 20px;
+
+    padding: 28px;
+
+    min-width: 350px;
+
+    box-shadow:
+        0 10px 40px rgba(0,0,0,0.18);
 }
 
 .hidden {
     display: none;
 }
 
+nav {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 0 24px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
 nav ul {
-    list-style-type: none;
     display: flex;
-    gap: 16px;
+    gap: 24px;
+    list-style: none;
 }
 
 nav li {
-    padding: 8px 4px;
-    color: white;
+    padding: 18px 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+nav a:hover {
+    color: var(--primary);
 }
 
 nav a:active,
 nav a:visited {
     color: inherit;
-}
-
-nav a {
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 18px;
-    padding: 8px 4px;
-}
-
-nav {
-    width: 100%;
-    background-color: #999;
-    height: fit-content;
 }
 
 nav li:hover {
@@ -277,9 +323,22 @@ nav li:hover {
     color: red;
 }
 
-input {
-    border-radius: 4px;
-    border-width: 1px;
+input,
+select,
+textarea {
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+
+    outline: none;
+    transition: 0.2s;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
 }
 
 button:hover {
@@ -349,4 +408,55 @@ button:hover {
     background-color: white;
     height: fit-content;
     border-radius: 16px;
+}
+
+.badge {
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.badge.success {
+    background: rgba(34,197,94,0.15);
+    color: #15803d;
+}
+
+.badge.danger {
+    background: rgba(239,68,68,0.15);
+    color: #b91c1c;
+}
+
+.linha-paga {
+    border-left: 6px solid #22c55e;
+}
+
+.linha-atrasada {
+    border-left: 6px solid #ef4444;
+}
+
+.filters {
+    background: white;
+    padding: 20px;
+    border-radius: 18px;
+
+    margin: 20px 0;
+
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+
+    justify-content: end;
+
+    box-shadow:
+        0 2px 10px rgba(0,0,0,0.05);
+}
+
+.empty-state {
+    padding: 40px;
+    text-align: center;
+    background: white;
+    border-radius: 18px;
+    color: #64748b;
 }
